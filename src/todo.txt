@@ -1,0 +1,1 @@
+Adding new items should have a dropdown to select the kind of tag it should be. Then the textfield/area works contextually with that.

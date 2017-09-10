@@ -1,0 +1,23 @@
+
+#menubar {
+}
+
+/*Editor GridPane*/
+
+#editorGrdPn {
+    /*-fx-background-color: red;*/
+    -fx-border-width: 0 1px 0 0;
+    -fx-border-color: #b9b9b9;
+}
+
+#tagsVbx {
+    -fx-background-color: green;
+}
+
+/*Output GridPane*/
+
+#outputGrdPn {
+    /*-fx-background-color: blue;*/
+    -fx-border-width: 0 0 0 1px;
+    -fx-border-color: #b9b9b9;
+}

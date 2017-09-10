@@ -1,0 +1,90 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.web.HTMLEditor?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<GridPane fx:controller="uk.robpetrie.markdownBlogEditor.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER">
+
+    <MenuBar fx:id="menubar" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.columnSpan="2">
+
+        <menus>
+
+            <Menu text="File">
+
+                <items>
+
+                    <MenuItem text="New Post"/>
+                    <MenuItem text="Save"/>
+
+                </items>
+
+            </Menu>
+
+            <Menu text="Items">
+
+                <items>
+
+                    <MenuItem text="New Heading"/>
+                    <MenuItem text="New Paragraph"/>
+
+                </items>
+
+            </Menu>
+
+        </menus>
+
+    </MenuBar>
+
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+    </columnConstraints>
+
+    <!--Editor GridPane-->
+
+    <GridPane fx:id="editorGrdPn" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="90.0" prefWidth="100.0"/>
+        </columnConstraints>
+
+        <HBox fx:id="postTitleHbx" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.columnSpan="2">
+
+            <Label fx:id="postTitleLbl" text="Post Title:"/>
+
+            <TextField fx:id="postTitleTxtF" HBox.hgrow="ALWAYS"/>
+
+        </HBox>
+
+        <VBox fx:id="tagsVbx" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"/>
+
+        <VBox fx:id="contentVbx" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"/>
+
+    </GridPane>
+
+    <!--Output GridPane-->
+
+    <GridPane fx:id="outputGrdPn" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+
+        <WebView fx:id="outputView" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS"/>
+
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+
+</GridPane>
