@@ -14,6 +14,7 @@
 <?import javafx.scene.web.WebView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
 <GridPane fx:controller="uk.robpetrie.markdownBlogEditor.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER">
 
@@ -56,22 +57,7 @@
 
     <GridPane fx:id="editorGrdPn" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
 
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="90.0" prefWidth="100.0"/>
-        </columnConstraints>
-
-        <HBox fx:id="postTitleHbx" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" GridPane.columnSpan="2">
-
-            <Label fx:id="postTitleLbl" text="Post Title:"/>
-
-            <TextField fx:id="postTitleTxtF" HBox.hgrow="ALWAYS"/>
-
-        </HBox>
-
-        <VBox fx:id="tagsVbx" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"/>
-
-        <VBox fx:id="contentVbx" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"/>
+        <TextField fx:id="editorTxtF" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS" prefHeight="99999" alignment="TOP_LEFT"/>
 
     </GridPane>
 
@@ -79,7 +65,7 @@
 
     <GridPane fx:id="outputGrdPn" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
 
-        <WebView fx:id="outputView" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS"/>
+        <WebView fx:id="outputView" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS"/>
 
     </GridPane>
 

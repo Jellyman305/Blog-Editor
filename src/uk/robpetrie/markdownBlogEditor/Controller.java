@@ -9,6 +9,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
+
 public class Controller {
 
     @FXML private WebView outputView;
@@ -20,22 +25,39 @@ public class Controller {
     private void initialize() {
 //        webEngine = outputView.getEngine();
 
-    }
+        String testMkDwn = "# This is a test\n";
+        String output = "";
 
-    private void newItem(String type) {
-        ObservableList<String> items =
-                FXCollections.observableArrayList(
-                        "Heading",
-                        "Paragraph"
-                );
-        final ComboBox itemTypeDrpdwn = new ComboBox(items);
-        itemTypeDrpdwn.setValue(type);
-        tagsVbx.getChildren().add(itemTypeDrpdwn);
-    }
+        output = checkChars(testMkDwn);
 
-    @FXML
-    private void newHeading() {
+        System.out.println(output);
 
     }
+
+    private String checkChars(String strToCheck) {
+        
+        Deque<String> tagStack = new ArrayDeque<String>();
+        String result = "";
+        
+        for (int i = 0; i < strToCheck.length(); i++) {
+
+            if ( i < strToCheck.length()-1 && ((Character.toString(strToCheck.charAt(i)) + Character.toString(strToCheck.charAt(i+1))).equals("# ")) ) {
+            tagStack.push("</h1>");
+            result += "<h1>";
+        } else if (strToCheck.charAt(i) == '\n') {
+            result += tagStack.pop();
+        } else if(tagStack.isEmpty()) {
+            tagStack.push("</p>");
+            result += "<p>";
+        } else {
+            result += strToCheck.charAt(i);
+        }
+            
+        }
+
+        return result;
+
+    }
+
 
 }
