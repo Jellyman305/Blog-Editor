@@ -25,7 +25,7 @@ public class Controller {
     private void initialize() {
 //        webEngine = outputView.getEngine();
 
-        String testMkDwn = "# This is a test\n";
+        String testMkDwn = "## This is a test\n";
         String output = "";
 
         output = checkChars(testMkDwn);
@@ -38,20 +38,37 @@ public class Controller {
         
         Deque<String> tagStack = new ArrayDeque<String>();
         String result = "";
+        strToCheck = " " + strToCheck;
         
         for (int i = 0; i < strToCheck.length(); i++) {
 
-            if ( i < strToCheck.length()-1 && ((Character.toString(strToCheck.charAt(i)) + Character.toString(strToCheck.charAt(i+1))).equals("# ")) ) {
-            tagStack.push("</h1>");
-            result += "<h1>";
-        } else if (strToCheck.charAt(i) == '\n') {
-            result += tagStack.pop();
-        } else if(tagStack.isEmpty()) {
-            tagStack.push("</p>");
-            result += "<p>";
-        } else {
-            result += strToCheck.charAt(i);
-        }
+            int tag = 0;
+            for (int j = 1; j <= 6; j++) {
+
+                // Need to make sure this isn't done if we've already got the tag.
+                if (i < strToCheck.length() - j && (  ) && ((Character.toString(strToCheck.charAt(i + (j - 1))) + Character.toString(strToCheck.charAt(i + j))).equals("# "))) {
+                    tag = j;
+                }
+            }
+            if (tag != 0) {
+                tagStack.push("</h" + tag + ">");
+                result += "<h" + tag + ">";
+            }
+
+//             if ( i < strToCheck.length()-1 && ((Character.toString(strToCheck.charAt(i)) + Character.toString(strToCheck.charAt(i+1))).equals("# ")) ) {
+//                tagStack.push("</h1>");
+//                result += "<h1>";
+//            }
+            else if (strToCheck.charAt(i) == '\n') {
+                result += tagStack.pop();
+            }
+            else if(tagStack.isEmpty()) {
+                tagStack.push("</p>");
+                result += "<p>";
+            }
+            else {
+                result += strToCheck.charAt(i);
+            }
             
         }
 
